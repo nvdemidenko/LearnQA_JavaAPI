@@ -1,25 +1,30 @@
 import io.restassured.RestAssured;
-import io.restassured.path.json.JsonPath;
+import io.restassured.http.Headers;
 import io.restassured.response.Response;
 import org.junit.jupiter.api.Test;
 
+import javax.xml.stream.Location;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StatusCodeTest {
+public class ShowHeadersTest {
 
     @Test
     public void TestStatusCodeRestAssured(){
+        Map<String, String> headers = new HashMap<>();
+        headers.put("myHeader1","value1");
+        headers.put("myHeader2","value2");
 
         Response response = RestAssured
                 .given()
                 .redirects()
-                .follow(true)
-                .when()
+                .follow(false)
                 .get("https://playground.learnqa.ru/api/get_303")
                 .andReturn();
-        int statusCode = response.getStatusCode();
-        System.out.println(statusCode);
-        response.print();
+
+        response.prettyPrint();
+
+        String locationHeader = response.getHeader("Location");
+        System.out.println(locationHeader);
     }
 }
