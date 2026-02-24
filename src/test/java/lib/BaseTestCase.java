@@ -1,6 +1,5 @@
 package lib;
 
-import io.restassured.http.Cookie;
 import io.restassured.http.Headers;
 import io.restassured.response.Response;
 

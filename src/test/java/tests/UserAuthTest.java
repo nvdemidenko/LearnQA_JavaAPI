@@ -16,7 +16,7 @@ import java.util.Map;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class BeforeEachTest extends BaseTestCase {
+public class UserAuthTest extends BaseTestCase {
 
     String cookie;
     String header;
@@ -76,6 +76,6 @@ public class BeforeEachTest extends BaseTestCase {
         }
 
         JsonPath responseForCheck = spec.get().jsonPath();
-        assertEquals(0, responseForCheck.getInt("user_id"), "user_id should be 0 for unath request");
+        assertEquals(0, responseForCheck.getInt("user_id"), "user_id should be 0 for unauth request");
     }
 }
